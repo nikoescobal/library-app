@@ -1,0 +1,26 @@
+{
+  "name": "library-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss css/styles.css -o build/styles.css",
+    "watch": "watch 'npm run build' ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikoescobal/library-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikoescobal/library-app/issues"
+  },
+  "homepage": "https://github.com/nikoescobal/library-app#readme",
+  "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.7"
+  }
+}
