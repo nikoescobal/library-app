@@ -12,16 +12,34 @@ function Book(author, title, pageCount, hasRead) {
 }
 
 function addBookToLibrary() {
-  let newBook = Book("Mary Higgins Clark", "Remember Me", 100, true);
+  const author = document.getElementById("author").value
+  const title = document.getElementById("title").value
+  const pageCount = document.getElementById("pageCount").value
+  const hasRead = document.getElementById("check").checked
+  let newBook = Book(author, title, pageCount, hasRead);
   myLibrary.push(newBook);
+  const bookElement = `<p id="">${author + ' ' + title + ' ' + pageCount + ' ' + hasRead}</p>`;
+  const bookholder = document.getElementById("bookholder");
+  bookholder.insertAdjacentHTML('afterbegin', bookElement);
 }
 
-addBookToLibrary();
-
-for (var book in myLibrary) {
+for (let book in myLibrary) {
   console.log(myLibrary[book])
 
   const bookElement = `<p id="">${myLibrary[book].author + ' ' + myLibrary[book].title + ' ' + myLibrary[book].pageCount + ' ' + myLibrary[book].hasRead}</p>`;
   const bookholder = document.getElementById("bookholder");
   bookholder.insertAdjacentHTML('afterbegin', bookElement);
+}
+
+document.getElementById("submit").addEventListener("click", function () {
+  addBookToLibrary();
+});
+
+function displayForm() {
+  const form = document.getElementById("form");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
 }
