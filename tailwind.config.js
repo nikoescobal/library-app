@@ -1,4 +1,3 @@
-console.log(process.env.NODE_ENV);
 const purge = process.env.NODE_ENV === 'production';
 module.exports = {
   purge: {

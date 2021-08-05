@@ -23,14 +23,11 @@ function addBookToLibrary() {
   bookholder.insertAdjacentHTML('afterbegin', bookElement);
 }
 
-// for (const book in myLibrary) {
-//   console.log(myLibrary[book]);
-
-Object.keys(myLibrary).forEach((book) => console.log(book));
-
-const bookElement = `<p id="">${`${myLibrary[book].author} ${myLibrary[book].title} ${myLibrary[book].pageCount} ${myLibrary[book].hasRead}`}</p>`;
-const bookholder = document.getElementById('bookholder');
-bookholder.insertAdjacentHTML('afterbegin', bookElement);
+myLibrary.forEach((book) => {
+  const bookElement = `<p id="">${`${book.author} ${book.title} ${book.pageCount} ${book.hasRead}`}</p>`;
+  const bookholder = document.getElementById('bookholder');
+  bookholder.insertAdjacentHTML('afterbegin', bookElement);
+});
 
 document.getElementById('submit').addEventListener('click', () => {
   addBookToLibrary();
@@ -44,3 +41,5 @@ function displayForm() {
     form.style.display = 'none';
   }
 }
+
+document.getElementById('displayForm').addEventListener('click', displayForm);
