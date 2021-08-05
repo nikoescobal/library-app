@@ -1,9 +1,9 @@
 console.log(process.env.NODE_ENV);
-const purge = process.env.NODE_ENV === 'production' ? true : false;
+const purge = process.env.NODE_ENV === 'production';
 module.exports = {
   purge: {
     enabled: purge,
-    content: ['./build/**/*.html']
+    content: ['./build/**/*.html'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -13,4 +13,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
