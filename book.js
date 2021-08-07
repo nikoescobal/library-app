@@ -1,5 +1,5 @@
 // import "tailwindcss/tailwind.css"
-myLibrary = [];
+myLibrary = [Book("Mario Puzo", "The Godfather", "333", true)];
 
 function Book(author, title, pageCount, hasRead) {
   const book = {
@@ -19,6 +19,12 @@ function addBookToLibrary() {
   const newBook = Book(author, title, pageCount, hasRead);
   myLibrary.push(newBook);
   displayLibrary();
+
+  const savedLibrary = JSON.stringify(myLibrary);
+  localStorage.setItem("book", savedLibrary);
+  // const book = 
+  localStorage.getItem("book");
+  localStorage.clear();
 }
 
 function removeBookFromLibrary(bookTitle) {
