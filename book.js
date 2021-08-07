@@ -1,5 +1,5 @@
 // import "tailwindcss/tailwind.css"
-const myLibrary = [];
+myLibrary = [];
 
 function Book(author, title, pageCount, hasRead) {
   const book = {
@@ -18,16 +18,32 @@ function addBookToLibrary() {
   const hasRead = document.getElementById('check').checked;
   const newBook = Book(author, title, pageCount, hasRead);
   myLibrary.push(newBook);
-  const bookElement = `<p id="">${`${author} ${title} ${pageCount} ${hasRead}`}</p>`;
-  const bookholder = document.getElementById('bookholder');
-  bookholder.insertAdjacentHTML('afterbegin', bookElement);
+  displayLibrary();
 }
 
-myLibrary.forEach((book) => {
-  const bookElement = `<p id="">${`${book.author} ${book.title} ${book.pageCount} ${book.hasRead}`}</p>`;
+function removeBookFromLibrary(bookTitle) {
+  const newLibrary = myLibrary.filter((book) => {
+    return book.title !== bookTitle
+  });
+  myLibrary = newLibrary;
+  displayLibrary();
+}
+
+function clearDisplay() {
   const bookholder = document.getElementById('bookholder');
-  bookholder.insertAdjacentHTML('afterbegin', bookElement);
-});
+  bookholder.innerHTML = '';
+}
+
+function displayLibrary() {
+  clearDisplay();
+
+  const bookholder = document.getElementById('bookholder');
+
+  myLibrary.forEach((book) => {
+    const bookElement = `<p>${book.author} ${book.title} ${book.pageCount} ${book.hasRead} <button class="remove-book" onClick="removeBookFromLibrary('${book.title}');">x</button></p>`;
+    bookholder.innerHTML += bookElement;
+  });
+}
 
 document.getElementById('submit').addEventListener('click', () => {
   addBookToLibrary();
@@ -43,3 +59,5 @@ function displayForm() {
 }
 
 document.getElementById('displayForm').addEventListener('click', displayForm);
+
+displayLibrary();
