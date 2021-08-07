@@ -1,5 +1,5 @@
-// import "tailwindcss/tailwind.css"
-myLibrary = [Book("Mario Puzo", "The Godfather", "333", true)];
+/* eslint-disable */
+let myLibrary = [];
 
 function Book(author, title, pageCount, hasRead) {
   const book = {
@@ -9,6 +9,15 @@ function Book(author, title, pageCount, hasRead) {
     hasRead,
   };
   return book;
+}
+
+function clearDisplay() {
+  const bookholder = document.getElementById('bookholder');
+  bookholder.innerHTML = '';
+}
+
+function displayLibrary() {
+  clearDisplay();
 }
 
 function addBookToLibrary() {
@@ -21,35 +30,24 @@ function addBookToLibrary() {
   displayLibrary();
 
   const savedLibrary = JSON.stringify(myLibrary);
-  localStorage.setItem("book", savedLibrary);
-  // const book = 
-  localStorage.getItem("book");
+  localStorage.setItem('book', savedLibrary);
+  // const book =
+  localStorage.getItem('book');
   localStorage.clear();
 }
 
 function removeBookFromLibrary(bookTitle) {
-  const newLibrary = myLibrary.filter((book) => {
-    return book.title !== bookTitle
-  });
+  const newLibrary = myLibrary.filter((book) => book.title !== bookTitle);
   myLibrary = newLibrary;
   displayLibrary();
 }
 
-function clearDisplay() {
-  const bookholder = document.getElementById('bookholder');
-  bookholder.innerHTML = '';
-}
+const bookholder = document.getElementById('bookholder');
 
-function displayLibrary() {
-  clearDisplay();
-
-  const bookholder = document.getElementById('bookholder');
-
-  myLibrary.forEach((book) => {
-    const bookElement = `<p>${book.author} ${book.title} ${book.pageCount} ${book.hasRead} <button class="remove-book" onClick="removeBookFromLibrary('${book.title}');">x</button></p>`;
-    bookholder.innerHTML += bookElement;
-  });
-}
+myLibrary.forEach((book) => {
+  const bookElement = `<p>${book.author} ${book.title} ${book.pageCount} ${book.hasRead} <button class="remove-book" onClick="removeBookFromLibrary('${book.title}');">x</button></p>`;
+  bookholder.innerHTML += bookElement;
+});
 
 document.getElementById('submit').addEventListener('click', () => {
   addBookToLibrary();
