@@ -1,4 +1,4 @@
-myLibrary = [];
+let myLibrary = [];
 
 function Book(author, title, pageCount, hasRead) {
   const book = {
