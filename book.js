@@ -1,3 +1,4 @@
+/* eslint-disable */
 let myLibrary = [];
 
 function Book(author, title, pageCount, hasRead) {
@@ -21,7 +22,6 @@ function displayLibrary() {
   const bookholder = document.getElementById('bookholder');
 
   myLibrary.forEach((book) => {
-
     const bookElement = `
     <article
         class="
@@ -75,7 +75,7 @@ function displayLibrary() {
           </button>
         </div>
       </article>
-    `
+    `;
     bookholder.innerHTML += bookElement;
   });
 }
@@ -91,7 +91,6 @@ function addBookToLibrary() {
 }
 
 function removeBookFromLibrary(bookTitle) {
-  console.log(bookTitle);
   const newLibrary = myLibrary.filter((book) => book.title !== bookTitle);
   myLibrary = newLibrary;
   displayLibrary();
