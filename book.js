@@ -53,7 +53,7 @@ function displayLibrary() {
         </p>
         <!-- <hr > -->
         <div class="flex justify-center px-5 mb-2 text-sm">
-          <button onClick='removeBookFromLibrary(${book.title})'
+        <button onClick="removeBookFromLibrary('${book.title}')"
             type="button"
             class="
               removeBtn
