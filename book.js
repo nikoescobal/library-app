@@ -1,4 +1,3 @@
-/* eslint-disable */
 let myLibrary = [];
 
 function Book(author, title, pageCount, hasRead) {
@@ -90,11 +89,13 @@ function addBookToLibrary() {
   displayLibrary();
 }
 
+/* eslint-disable */
 function removeBookFromLibrary(bookTitle) {
   const newLibrary = myLibrary.filter((book) => book.title !== bookTitle);
   myLibrary = newLibrary;
   displayLibrary();
 }
+/* eslint-enable */
 
 document.getElementById('submit').addEventListener('click', () => {
   addBookToLibrary();
